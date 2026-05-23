@@ -196,15 +196,24 @@ collatz-wheel/
 
 ---
 
-## Author
+## 🔗 Related Projects
+
+- [WheelPhysics](https://github.com/Mariusz-Rossa/WheelPhysics) — Wheel Algebra applied to singularities in theoretical physics (DOI: [10.5281/zenodo.20305458](https://doi.org/10.5281/zenodo.20305458))
+- [ThreeBody](https://github.com/Mariusz-Rossa/ThreeBody) — Framework for numerical simulation and statistical analysis of hierarchical three-body gravitational system (DOI: [10.5281/zenodo.20356331](https://doi.org/10.5281/zenodo.20356331))
+
+---
+
+## 👤 Author
 
 **Mariusz Rossa** — independent researcher  
 ORCID: [0009-0006-1060-2883](https://orcid.org/0009-0006-1060-2883)
-
-Related projects: [WheelPhysics](https://doi.org/10.5281/zenodo.20305458)
 
 ---
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+*Independent research project.*
