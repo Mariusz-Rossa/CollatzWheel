@@ -1,6 +1,6 @@
 # CollatzWheel
 
-[![DOI](https://zenodo.org/badge/DOI/[ZENODO_DOI].svg)](https://doi.org/[ZENODO_DOI])
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20355730.svg)](https://doi.org/10.5281/zenodo.20355730)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
 
