@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Data & results (large files — commit selectively)
+data/results/*.png
+data/results/*.csv
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Logs
+*.log

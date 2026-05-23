@@ -1,0 +1,7 @@
+numpy>=1.26
+matplotlib>=3.8
+networkx>=3.2
+pytest>=7.0
+
+# Optional — for interactive exploration
+# jupyter>=1.0
