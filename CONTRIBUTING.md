@@ -16,7 +16,7 @@ Thank you for your interest in this project. Contributions are welcome — wheth
 ## Development setup
 
 ```bash
-git clone https://github.com/Mariusz-Rossa/CollatWheel.git
+git clone https://github.com/Mariusz-Rossa/CollatzWheel.git
 cd CollatzWheel
 python3 -m venv .venv
 source .venv/bin/activate
