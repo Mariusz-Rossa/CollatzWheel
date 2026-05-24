@@ -30,6 +30,22 @@ Mapping Collatz sequences onto Wheel(mod 6) yields 8 possible states: `{0, 1, 2,
 
 ---
 
+## Scope and intent
+
+This project does not attempt to prove or disprove the Collatz conjecture.
+As Tao (2019) noted, a full proof is likely beyond the reach of current mathematics.
+
+What we're doing is looking for algebraic structure *within* the sequences.
+The conjecture tells us nothing about why some paths are short and others
+take 500+ steps to reach 1. The goal here is to find patterns that explain
+that variance — specifically, whether the Wheel signature of a number
+can predict the length of its path without computing the whole sequence.
+
+Think of it less as "attacking the conjecture" and more as "mapping the terrain."
+All findings are empirical. Algebraic proofs are the subject of ongoing work.
+
+---
+
 ## Empirical findings (as of May 2026, n ≤ 1,000,000)
 
 **Finding 1 — The Wheel-12 constant.**
