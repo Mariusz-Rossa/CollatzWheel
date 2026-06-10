@@ -163,11 +163,11 @@ def plot_transition_heatmap(results: list[dict], save_path: str | None = None):
 #  3. Collatz path with Wheel colouring                              #
 # ------------------------------------------------------------------ #
 
-def plot_collatz_path(n: int, save_path: str | None = None):
+def plot_collatz_path(n: int, mod: int = 6, save_path: str | None = None):
     _apply_dark_theme()
 
     seq = collatz_sequence(n)
-    sig = wheel_signature(n)
+    sig = wheel_signature(n, mod)  
     colors = [WHEEL_COLORS.get(str(w), "#888") for w in sig]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 8),
@@ -240,7 +240,7 @@ def plot_length_scatter(results: list[dict], save_path: str | None = None):
 #  Save all plots                                                    #
 # ------------------------------------------------------------------ #
 
-def save_all(results: list[dict], out_dir: str = "data/results"):
+def save_all(results: list[dict], out_dir: str = "data/results", mod: int = 6):
     Path(out_dir).mkdir(parents=True, exist_ok=True)
     print(f"\nSaving plots to {out_dir}/\n")
 
@@ -250,7 +250,7 @@ def save_all(results: list[dict], out_dir: str = "data/results"):
 
     for r in top_records(results, 3):
         n = r["start"]
-        plot_collatz_path(n, f"{out_dir}/04_path_n{n}.png")
+        plot_collatz_path(n, f"{out_dir}/04_path_n{n}.png", mod=mod)
 
 
 # ------------------------------------------------------------------ #

@@ -113,7 +113,18 @@ for r in top_records(results, 5):
     print(f"    n={r['start']:5d}  length={r['length']:4d}  "
           f"mod={r['start_mod']}  dominant={r['dominant_transition']}")
 
+# ------------------------------------------------------------------ #
+#  5. Wheel signatures — mod 12 preview                              #
+# ------------------------------------------------------------------ #
+print(f"\n{SEP}")
+print("\n[5] Wheel signatures — mod 12 preview\n")
 
+for n in [6, 27, 97]:
+    print(f"  n={n:>3}:  {signature_string(n, mod=12, max_steps=15)}")
+
+print()
+print("  Mod 12 gives 14 states instead of 8.")
+print("  Finer structure — exploration ongoing (issue #2).")
 # ------------------------------------------------------------------ #
 #  Done                                                               #
 # ------------------------------------------------------------------ #

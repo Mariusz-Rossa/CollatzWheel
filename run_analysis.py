@@ -41,14 +41,14 @@ def _progress(n: int, n_max: int, start_time: float):
 #  Small-n mode — full results in memory                              #
 # ------------------------------------------------------------------ #
 
-def run_in_memory(n_max: int) -> list[dict]:
+def run_in_memory(n_max: int, mod: int = 6) -> list[dict]:
     results    = []
     start_time = time.time()
 
     for n in range(1, n_max + 1):
         metrics = collatz_metrics(n)
-        sig     = wheel_signature(n)
-        trans   = signature_transitions(n)
+        sig     = wheel_signature(n, mod)
+        trans   = signature_transitions(n, mod)
         freq    = Counter(trans)
 
         results.append({
@@ -73,7 +73,7 @@ def run_in_memory(n_max: int) -> list[dict]:
 #  Large-n mode — chunk by chunk, no CSV, no RAM explosion            #
 # ------------------------------------------------------------------ #
 
-def run_chunked(n_max: int) -> dict:
+def run_chunked(n_max: int, mod: int = 6) -> dict:
     """
     Processes n=1..n_max in chunks of CHUNK_SIZE.
     Never stores more than one chunk in RAM.
@@ -97,8 +97,8 @@ def run_chunked(n_max: int) -> dict:
 
         for n in range(chunk_start, chunk_end + 1):
             metrics  = collatz_metrics(n)
-            sig      = wheel_signature(n)
-            freq     = Counter(signature_transitions(n))
+            sig      = wheel_signature(n, mod)
+            freq     = Counter(signature_transitions(n, mod))
 
             start_mod = int(sig[0].value) if sig[0].is_regular() else str(sig[0].value)
             dominant  = freq.most_common(1)[0] if freq else None
@@ -137,8 +137,8 @@ def run_chunked(n_max: int) -> dict:
     }
 
 
-def print_summary(summary: dict, n_max: int):
-    print("\nCorrelation: start_mod → path length:")
+def print_summary(summary: dict, n_max: int, mod: int = 6):
+    print(f"\nCorrelation: start_mod (n mod {mod}) → path length:")
     for mod_val, lengths in sorted(summary["mod_lengths"].items()):
         avg = sum(lengths) / len(lengths)
         print(f"  mod={mod_val}: avg={avg:7.2f}  max={max(lengths):5d}  n={len(lengths)}")
@@ -176,12 +176,23 @@ while True:
         print("  n must be > 0.\n")
         continue
 
-    print(f"\n  Computing for n = 1..{n_max:,}...\n")
+    try:
+        mod_input = input("Enter modulus (default 6): ").strip()
+        mod = int(mod_input) if mod_input else 6
+    except ValueError:
+        print("  Invalid modulus, using 6.\n")
+        mod = 6
+
+    if mod < 2:
+        print("  Modulus must be >= 2, using 6.\n")
+        mod = 6
+
+    print(f"\n  Computing for n = 1..{n_max:,}, mod={mod}...\n")
 
     if n_max <= LARGE_N_THRESHOLD:
-        results = run_in_memory(n_max)
+        results = run_in_memory(n_max, mod)
 
-        print("\nCorrelation: start_mod → path length:")
+        print(f"\nCorrelation: start_mod (n mod {mod}) → path length:")
         for mod_val, stats in correlate_by_start_mod(results).items():
             print(f"  mod={mod_val}: avg={stats['avg_len']:7.2f}  "
                   f"max={stats['max_len']:5d}  n={stats['count']}")
@@ -197,7 +208,7 @@ while True:
                   f"start_mod={r['start_mod']}  dominant={r['dominant_transition']}")
 
     else:
-        summary = run_chunked(n_max)
-        print_summary(summary, n_max)
+        summary = run_chunked(n_max, mod)
+        print_summary(summary, n_max, mod)
 
     print("\n" + SEP + "\n")
