@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Mariusz Rossa
 # Licensed under the MIT License — see LICENSE file for details.
-# main.py
+# main.py 
 
 """
 CollatzWheel — quick demo
