@@ -197,7 +197,7 @@ collatz-wheel/
 - [x] Batch analysis and correlation discovery (n ≤ 1,000,000)
 - [x] Visualisation (heatmaps, scatter plots, path plots)
 - [x] Unit tests (73 tests, Carlström axioms)
-- [ ] Analysis for n ≤ 100,000,000
+- [x] Analysis for n ≤ 100,000,000
 - [ ] Wheel(mod 12) and Wheel(mod 30) exploration
 - [ ] Formal statement of empirical findings
 - [ ] Preprint (Zenodo)
