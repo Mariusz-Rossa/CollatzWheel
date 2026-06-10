@@ -508,7 +508,7 @@ class TestWheelSignatures:
     def test_signature_string_truncation(self):
         # n=27 has 112-element sequence; max_steps=10 should truncate
         s = signature_string(27, max_steps=10)
-        assert "więcej" in s
+        assert "more" in s
 
     def test_signature_transitions_length(self):
         for n in [6, 27, 100]:
